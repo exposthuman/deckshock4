@@ -1,0 +1,34 @@
+name: Build DeckShock4
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libsystemd-dev
+
+      - name: Build
+        run: |
+          make
+
+      - name: Find binary
+        run: |
+          find . -type f -name deckshock4 -ls
+
+      - name: Upload DeckShock4
+        uses: actions/upload-artifact@v4
+        with:
+          name: deckshock4-l1-r1-shake
+          path: out/dir/deckshock4
+          if-no-files-found: error
