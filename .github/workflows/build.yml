@@ -18,9 +18,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y build-essential libsystemd-dev
 
+      - name: Prepare build config
+        run: cp .env.example .env
+        
       - name: Build
-        run: |
-          make
+        run: make
 
       - name: Find binary
         run: |
