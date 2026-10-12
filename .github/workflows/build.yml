@@ -19,7 +19,7 @@ jobs:
           sudo apt-get install -y build-essential libsystemd-dev
 
       - name: Prepare build config
-        run: cp .env.example .env
+        run: cp .env.template .env
         
       - name: Build
         run: make
