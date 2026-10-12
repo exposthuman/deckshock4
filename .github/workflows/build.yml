@@ -32,5 +32,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: deckshock4-l1-r1-shake
-          path: out/dir/deckshock4
+          path: out/deckshock4
           if-no-files-found: error
