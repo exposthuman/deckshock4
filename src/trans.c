@@ -480,7 +480,7 @@ void trans_rep_sdc_to_ds4(char *ds4rep, const char *sdcrep)
     set_dpad(ds4rep, sdcrep);
     set_bools(ds4rep, sdcrep);
     set_scalars(ds4rep, sdcrep);
-    if(shake_button_down(sdcrep)) shake_sensors(ds4rep);
+    if(shake_button_down(sdcrep) || (((sdcrep[sdcL1.byte] >> sdcL1.bit) & 1) && ((sdcrep[sdcR1.byte] >> sdcR1.bit) & 1))) shake_sensors(ds4rep);
     else set_sensors(ds4rep, sdcrep);
     set_tpad(ds4rep, sdcrep, tpadtime, timeinc);
 
